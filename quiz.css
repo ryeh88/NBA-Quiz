@@ -1,0 +1,76 @@
+/*style autocomplete*/
+/*material design google it*/
+/*parallax scrolling*/
+
+
+div {
+	padding: 2% 4%;
+
+}
+
+div.question-0,
+div.question-1,
+div.question-2,
+div.question-3,
+div.question-4 {
+	background-image: url("http://smallfactory.info/raymond/nba.png");
+	background-repeat: no-repeat;
+	background-position: top right;
+	background-size: 35%;
+}
+
+
+
+
+
+input[type=text] {
+	height: 30px;
+	width: 50%;
+	border: 5px solid white; 
+	-webkit-box-shadow: inset 0 0 8px rgba(0,0,0,0.1), 0 0 16px rgba(0,0,0,0.1); 
+	-moz-box-shadow: inset 0 0 8px rgba(0,0,0,0.1), 0 0 16px rgba(0,0,0,0.1); 
+	box-shadow: inset 0 0 8px rgba(0,0,0,0.1), 0 0 16px rgba(0,0,0,0.1); 
+	padding: 15px; 
+	background: rgba(255,255,255,0.5); 
+	margin: 0 0 10px 0;
+	font-size: 20px;
+	font-family: 'Fjalla One', sans-serif;
+
+
+}
+
+input[type=submit] {
+    border-radius: 5px;
+    border: 0;
+    width: 80px;
+    height:25px;
+    margin-left: 10px;
+    font-family: Tahoma;
+    background: #f4f4f4;
+    /* Old browsers */
+    background: -moz-linear-gradient(top, #f4f4f4 1%, #ededed 100%);
+    /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(1%, #f4f4f4), color-stop(100%, #ededed));
+    /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #f4f4f4 1%, #ededed 100%);
+    /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #f4f4f4 1%, #ededed 100%);
+    /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #f4f4f4 1%, #ededed 100%);
+    /* IE10+ */
+    background: linear-gradient(to bottom, #f4f4f4 1%, #ededed 100%);
+    /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f4f4f4', endColorstr='#ededed', GradientType=0);
+    /* IE6-9 */
+}
+
+
+div {
+	background-color: #eae13c;
+	display:none;
+	width: 60%;
+	color: white;
+}
+
+
+
