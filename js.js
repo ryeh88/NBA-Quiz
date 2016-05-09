@@ -35,25 +35,29 @@ $(document).ready( function () {
 //       }
 // });
 
+// loop through questions object and append each item onto html including inputs
+
 	for (i = 0; i < questions.length; i++) {
 
     	$('.questions-wrapper').append('<div class="question-'+i+'"><h1>'+questions[i].question+'</h1><input type="text" id="'+questions[i].inputId+'"><input id="enter-'+questions[i].inputId+'" type="submit" value="Submit"></div>');
     	
 	};
 
+// Auto complete
 
   var nbaTeams = [
-    { value: 'Rockets'},
-    { value: 'Raptors'},
-    { value: 'Warriors'},
-    { value: 'Hawks'},
-    { value: 'Lakers'},
-    { value: 'Bucks'},
-    { value: 'Celtics'},
+    { value: 'Houston Rockets'},
+    { value: 'Toronto Raptors'},
+    { value: 'Golden State Warriors'},
+    { value: 'Atlanta Hawks'},
+    { value: 'Los Angeles Lakers'},
+    { value: 'Milwaukee Bucks'},
+    { value: 'Boston Celtics'},
+    { value: 'Miami-Heat'}
   
   ];
  
-  // setup autocomplete function pulling from nbaTeams[] array
+ 
   $('#champion').autocomplete({
     lookup: nbaTeams,
     onSelect: function (suggestion) {
@@ -62,8 +66,74 @@ $(document).ready( function () {
     }
   });
 
+  var mvps = [
+  	{value: 'Ray Allen'},
+  	{value: 'Klay Thompson'},
+  	{value: 'Kyrie Irving'},
+  	{value: 'Mark Price'},
+  	{value: 'Eddie Jones'},
+  	{value: 'Stephen Curry'},
+  	{value: 'Kyle Korver'}
+  ];
 
+$('#mvp').autocomplete({
+    lookup: mvps,
+    onSelect: function (suggestion) {
+      var thehtml = '<strong>Item:</strong> ' + suggestion.value;
+      $('#outputcontent').html(thehtml);
+    }
+  });
 
+var threes = [
+{value: '401'},
+{value: '402'},
+{value: '403'},
+{value: '404'},
+{value: '400'},
+{value: '399'}
+];
+
+$('#threes').autocomplete({
+	lookup: threes,
+	onSelect: function (suggestion) {
+		var thehtml = '<strong>Item:</strong> ' + suggestion.value;
+		$('#outputcontent').html(thehtml);
+	}
+
+});
+
+$('#firstRound').autocomplete({
+	lookup: nbaTeams,
+	onSelect: function(suggestion) {
+		var thehtml = '<strong>Item:</strong>' + suggestion.value;
+		$('#outputcontent').html(thehtml);
+	}
+});
+
+var allStars = [
+	{value: '1'},
+	{value: '2'},
+	{value: '3'},
+	{value: '4'},
+	{value: '5'},
+	{value: '6'},
+	{value: 'one'},
+	{value: 'two'},
+	{value: 'three'},
+	{value: 'four'},
+	{value: 'five'}
+
+];
+
+$('#allStar').autocomplete({
+	lookup: allStars,
+	onSelect: function(suggestion) {
+		var thehtml = '<strong> Item: </strong>' + suggestion.value;
+		$('#outputcontent').html(thehtml);
+	} 
+});
+
+	
 
 	// Show First Question
 	initialQuiz();
@@ -87,6 +157,7 @@ function initialQuiz() {
 	$(".question-0").show("slow");
 	$("#score").hide();
 	$("#restart").hide();
+	$("#applause").hide();
 	
 	//Reset all input values
 	$(":input:text").val("");
@@ -127,7 +198,7 @@ function testTwo () {
 		} else {
 			$(".question-2").show("slow");
 			$(".question-1").hide("slow");
-			$("#hints").html("<span>The correct answer was Stephen Curry</span>").show();
+			$("#hints").html("<span>The correct answer was Klay Thompson</span>").show();
 			$("#hints").fadeOut(3000);
 			
 			correct -=1;
@@ -179,12 +250,15 @@ function testFive() {
 		if (userAnswer.toString() === '3' || userAnswer.toString() === 'three') {
 				$(".question-4").hide("slow");
 				$("#score").html("You got " + correct + " out of 5 correct").show();
+				$("#applause").html("<iframe src='//giphy.com/embed/s59Csd4R2DtQI' width='480' height='403' frameBorder='0' class='giphy-embed' allowFullScreen></iframe><p><a href='http://giphy.com/gifs/frustrated-applause-thumbs-up-s59Csd4R2DtQI'>via GIPHY</a></p>").show();
+
 		} else {
 			$(".question-4").hide("slow");
 			correct -= 1;
 			$("#hints").html("<span>The correct answer was 3</span>").show();
 			$("#hints").fadeOut(3000);
 			$("#score").html("You got " + correct + " out of 5 correct").show();
+			$("#applause").html("<iframe src='//giphy.com/embed/s59Csd4R2DtQI' width='480' height='403' frameBorder='0' class='giphy-embed' allowFullScreen></iframe><p><a href='http://giphy.com/gifs/frustrated-applause-thumbs-up-s59Csd4R2DtQI'>via GIPHY</a></p>").show();
 		
 		}
 	});

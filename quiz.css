@@ -2,6 +2,11 @@
 /*material design google it*/
 /*parallax scrolling*/
 
+h1 {
+	margin-top: 80px;
+	color: #006BB6;
+}
+
 
 div {
 	padding: 2% 4%;
@@ -17,6 +22,11 @@ div.question-4 {
 	background-repeat: no-repeat;
 	background-position: top right;
 	background-size: 35%;
+	background-color: #FDB927;
+	display:none;
+	width: 60%;
+	color: white;
+	height: 350px;
 }
 
 
@@ -24,8 +34,9 @@ div.question-4 {
 
 
 input[type=text] {
+	background: #006BB6;
 	height: 30px;
-	width: 50%;
+	width: 200px;
 	border: 5px solid white; 
 	-webkit-box-shadow: inset 0 0 8px rgba(0,0,0,0.1), 0 0 16px rgba(0,0,0,0.1); 
 	-moz-box-shadow: inset 0 0 8px rgba(0,0,0,0.1), 0 0 16px rgba(0,0,0,0.1); 
@@ -40,6 +51,7 @@ input[type=text] {
 }
 
 input[type=submit] {
+    
     border-radius: 5px;
     border: 0;
     width: 80px;
@@ -58,19 +70,17 @@ input[type=submit] {
     /* Opera 11.10+ */
     background: -ms-linear-gradient(top, #f4f4f4 1%, #ededed 100%);
     /* IE10+ */
-    background: linear-gradient(to bottom, #f4f4f4 1%, #ededed 100%);
+    background: linear-gradient(to bottom, #006BB6 1%, #ededed 100%);
     /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f4f4f4', endColorstr='#ededed', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#006BB6', endColorstr='#ededed', GradientType=0);
     /* IE6-9 */
 }
 
 
-div {
-	background-color: #eae13c;
-	display:none;
-	width: 60%;
-	color: white;
+.autocomplete-suggestions{
+	background-color: #006BB6;
+	width: 150px;
+	border: 1px solid #454545;
+    color: white;
+    white-space: nowrap;
 }
-
-
-
