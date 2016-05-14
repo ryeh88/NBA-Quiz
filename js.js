@@ -39,9 +39,11 @@ $(document).ready( function () {
 
 	for (i = 0; i < questions.length; i++) {
 
-    	$('.questions-wrapper').append('<div class="question-'+i+'"><h1>'+questions[i].question+'</h1><input type="text" id="'+questions[i].inputId+'"><input id="enter-'+questions[i].inputId+'" type="submit" value="Submit"></div>');
+    	$('.questions-wrapper').append('<div class="question-'+i+'"><h1>'+questions[i].question+'</h1><input type="text" id="'+questions[i].inputId+'"><input id="enter-'+questions[i].inputId+'" type="submit" value="Submit"><button id="restart">Restart</button></div>');
     	
 	};
+
+
 
 // Auto complete
 
@@ -85,12 +87,12 @@ $('#mvp').autocomplete({
   });
 
 var threes = [
-{value: '401'},
-{value: '402'},
-{value: '403'},
-{value: '404'},
-{value: '400'},
-{value: '399'}
+	{value: '401'},
+	{value: '402'},
+	{value: '403'},
+	{value: '404'},
+	{value: '400'},
+	{value: '399'}
 ];
 
 $('#threes').autocomplete({
@@ -135,21 +137,30 @@ $('#allStar').autocomplete({
 
 	
 
-	// Show First Question
-	initialQuiz();
-	testOne();
-	testTwo();
-	testThree();
-	testFour();
-	testFive();
+// Show First Question
+initialQuiz();
+testOne();
+testTwo();
+testThree();
+testFour();
+testFive();
+
+$("button#restart").click( function () {
 	
-	$("#restart").click( function () {
-		
-		initialQuiz();
+	initialQuiz();
+
+	});
+
+$("button#restart-main").click( function () {
+	
+	initialQuiz();
 
 	});
 
 });
+
+
+
 
 function initialQuiz() {
 	$("div").hide();
@@ -157,7 +168,9 @@ function initialQuiz() {
 	$(".question-0").show("slow");
 	$("#score").hide();
 	$("#restart").hide();
+	$("#restart-main").hide();
 	$("#applause").hide();
+	$("#hints").hide();
 	
 	//Reset all input values
 	$(":input:text").val("");
@@ -175,15 +188,24 @@ function testOne() {
 		if (userAnswer.toLowerCase() === 'golden state warriors' || userAnswer.toLowerCase() === 'the golden state warriors') {
 			$(".question-0").hide("slow");
 			$(".question-1").show("slow");
+			var currentCorrect = $('#hints span.correct').html();
+			currentCorrect++;
+
+			$('div.modal p').html("Your answer was <span class='gold'><strong> "+userAnswer+"</strong></span>. That was a correct answer! You are <span class='correct'>1</span>/<span class='total'>1</span></span>");
+			$('div.modal').modal();
+			$("#hints").html("<span>You are <span class='correct'>1</span>/<span class='total'>1</span></span>");
+
 		} else {
 			$(".question-1").show("slow");
 			$(".question-0").hide("slow");
-			$("#hints").html("<span>The correct answer was the Golden State Warriors</span>");
-			$("#hints").fadeOut(3000);
-			correct -= 1;
+			$('div.modal p').html("Your answer was <strong>"+userAnswer+"</strong>. The correct answer is the <span class='gold'> Golden State Warriors!</span> You are <span class='correct'>0</span>/<span class='total'>1</span>");
+			$('div.modal').modal();
+			$("#hints").html("<span>You are <span class='correct'>0</span>/<span class='total'>1</span></span>");
+			;
+			
 		}
 	
-		$("#restart").show();
+		$("button#restart").show();
 	});
 
 };
@@ -195,13 +217,25 @@ function testTwo () {
 		if (userAnswer.toLowerCase() === 'stephen curry' || userAnswer.toLowerCase() === 'steph curry') {
 			$(".question-1").hide("slow");
 			$(".question-2").show("slow");
+			var currentCorrect = $('#hints span.correct').html();
+			var currentTotal = $('#hints span.total').html();
+			currentCorrect++;
+			currentTotal++;
+			$("#hints").html("<span>You are <span class='correct'>"+currentCorrect+"</span>/<span class='total'>"+currentTotal+"</span></span>");
+			$('div.modal p').html("Your answer was <strong class='gold'> "+userAnswer+"</strong>. That was a correct answer! You are "+currentCorrect+"/"+currentTotal+"");
+			$('div.modal').modal();
+			
 		} else {
 			$(".question-2").show("slow");
 			$(".question-1").hide("slow");
-			$("#hints").html("<span>The correct answer was Klay Thompson</span>").show();
-			$("#hints").fadeOut(3000);
+			var currentCorrect = $('#hints span.correct').html();
+			var currentTotal = $('#hints span.total').html();
+			currentTotal++;
+			$('div.modal p').html("Your answer was <strong> "+userAnswer+"</strong>. The correct answer is <span class='gold'> Stephen Curry!</span> You are "+currentCorrect+'/'+currentTotal+"");
+			$('div.modal').modal();
+			$("#hints").html("<span>You are <span class='correct'>"+currentCorrect+"</span>/<span class='total'>"+currentTotal+"</span></span>");
 			
-			correct -=1;
+		
 		};
 
 	});
@@ -213,13 +247,24 @@ function testThree() {
 		if (userAnswer.toString() === '402' || userAnswer.toString() === 'four hundred two') {
 			$(".question-2").hide("slow");
 			$(".question-3").show("slow");
+			var currentCorrect = $('#hints span.correct').html();
+			var currentTotal = $('#hints span.total').html();
+			currentCorrect++;
+			currentTotal++;
+			$('div.modal p').html('Your answer was <span class="gold"><strong>'+userAnswer+'</strong></span>. That was a correct answer! You are '+currentCorrect+'/'+currentTotal+'');
+			$('div.modal').modal();
+			$("#hints").html("<span>You are <span class='correct'>"+currentCorrect+"</span>/<span class='total'>"+currentTotal+"</span></span>");
+
 		} else {
 			$(".question-3").show("slow");
 			$(".question-2").hide("slow");
-			$("#hints").html("<span>The correct answer was 402</span>").show();
-			$("#hints").fadeOut(3000);
-			
-				correct -= 1;
+			var currentCorrect = $('#hints span.correct').html();
+			var currentTotal = $('#hints span.total').html();
+			currentTotal++;
+			$('div.modal p').html('Your answer was <strong> '+userAnswer+'</strong>. The correct answer is <span class="gold">402</span>. You are '+currentCorrect+'/'+currentTotal+'');
+			$('div.modal').modal();
+			$("#hints").html("<span>You are <span class='correct'>"+currentCorrect+"</span>/<span class='total'>"+currentTotal+"</span></span>");
+		
 		};
 	
 	});
@@ -231,12 +276,27 @@ function testFour() {
 		if (userAnswer.toLowerCase() === 'houston rockets' || userAnswer.toLowerCase() === 'the houston rockets') {
 			$(".question-3").hide("slow");
 			$(".question-4").show("slow");
+			var currentCorrect = $('#hints span.correct').html();
+			var currentTotal = $('#hints span.total').html();
+			currentCorrect++;
+			currentTotal++;
+			$('div.modal p').html('Your answer was <span class="gold"><strong>'+userAnswer+'</strong></span>. That was a correct answer! You are '+currentCorrect+'/'+currentTotal+'');
+			$('div.modal').modal();
+			$("#hints").html("<span>You are <span class='correct'>"+currentCorrect+"</span>/<span class='total'>"+currentTotal+"</span></span>");
+
+			
 		} else {
 			$(".question-4").show("slow");
 			$(".question-3").hide("slow");
-			$("#hints").html("<span>The correct answer was the Houston Rockets</span>").show();
-			$("#hints").fadeOut(3000);
-			correct -= 1;
+			var currentCorrect = $('#hints span.correct').html();
+			var currentTotal = $('#hints span.total').html();
+			currentTotal++;
+			$('div.modal p').html('Your answer was <strong> '+userAnswer+'</strong>. The answer is the <span class="gold">Houston Rockets</span>. You are '+currentCorrect+'/'+currentTotal+'');
+			$('div.modal').modal();
+			$("#hints").html("<span>You are <span class='correct'>"+currentCorrect+"</span>/<span class='total'>"+currentTotal+"</span></span>");
+
+			
+	
 			
 		};
 		
@@ -247,19 +307,29 @@ function testFour() {
 function testFive() {
 	$("#enter-allStar").click( function () {
 		userAnswer = $("input#allStar").val();
+		$('#hints').hide();
 		if (userAnswer.toString() === '3' || userAnswer.toString() === 'three') {
 				$(".question-4").hide("slow");
-				$("#score").html("You got " + correct + " out of 5 correct").show();
-				$("#applause").html("<iframe src='//giphy.com/embed/s59Csd4R2DtQI' width='480' height='403' frameBorder='0' class='giphy-embed' allowFullScreen></iframe><p><a href='http://giphy.com/gifs/frustrated-applause-thumbs-up-s59Csd4R2DtQI'>via GIPHY</a></p>").show();
+				var currentCorrect = $('#hints span.correct').html();
+				var currentTotal = $('#hints span.total').html();
+				currentCorrect++;
+				currentTotal++;
+				$('div.modal p').html('Your answer was <span class="gold"><strong> '+userAnswer+'</strong></span>. That was clutch ! Your total score is <span class="gold">'+currentCorrect+'/'+currentTotal+'</span>');
+				$('div.modal').modal();
+				$("#applause").html("<iframe src='//giphy.com/embed/s59Csd4R2DtQI' width='480' height='403' frameBorder='0' class='giphy-embed' allowFullScreen></iframe><p><a href='http://giphy.com/gifs/frustrated-applause-thumbs-up-s59Csd4R2DtQI'></a></p>").show();
 
 		} else {
 			$(".question-4").hide("slow");
 			correct -= 1;
-			$("#hints").html("<span>The correct answer was 3</span>").show();
-			$("#hints").fadeOut(3000);
-			$("#score").html("You got " + correct + " out of 5 correct").show();
-			$("#applause").html("<iframe src='//giphy.com/embed/s59Csd4R2DtQI' width='480' height='403' frameBorder='0' class='giphy-embed' allowFullScreen></iframe><p><a href='http://giphy.com/gifs/frustrated-applause-thumbs-up-s59Csd4R2DtQI'>via GIPHY</a></p>").show();
+			var currentCorrect = $('#hints span.correct').html();
+				var currentTotal = $('#hints span.total').html();
+				currentTotal++;
+				$('div.modal p').html('Your answer was <strong> '+userAnswer+'</strong>. The correct answer is <span class="gold">3</span>! Your total score is <span class="gold">'+currentCorrect+'/'+currentTotal+'</span>');
+				$('div.modal').modal();
+				$("#applause").html("<iframe src='//giphy.com/embed/s59Csd4R2DtQI' width='480' height='403' frameBorder='0' class='giphy-embed' allowFullScreen></iframe><p><a href='http://giphy.com/gifs/frustrated-applause-thumbs-up-s59Csd4R2DtQI'></a></p>").show();
+				
 		
 		}
+		$('#restart-main').show();
 	});
 };
