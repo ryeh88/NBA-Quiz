@@ -316,7 +316,7 @@ function testFive() {
 				currentTotal++;
 				$('div.modal p').html('Your answer was <span class="gold"><strong> '+userAnswer+'</strong></span>. That was clutch ! Your total score is <span class="gold">'+currentCorrect+'/'+currentTotal+'</span>');
 				$('div.modal').modal();
-				$("#applause").html("<iframe src='//giphy.com/embed/s59Csd4R2DtQI' width='480' height='403' frameBorder='0' class='giphy-embed' allowFullScreen></iframe><p><a href='http://giphy.com/gifs/frustrated-applause-thumbs-up-s59Csd4R2DtQI'></a></p>").show();
+				$("#applause").html("<iframe src='http://giphy.com/embed/s59Csd4R2DtQI' width='480' height='403' frameBorder='0' class='giphy-embed' allowFullScreen></iframe><p><a href='http://giphy.com/gifs/frustrated-applause-thumbs-up-s59Csd4R2DtQI'></a></p>").show();
 
 		} else {
 			$(".question-4").hide("slow");
@@ -326,7 +326,7 @@ function testFive() {
 				currentTotal++;
 				$('div.modal p').html('Your answer was <strong> '+userAnswer+'</strong>. The correct answer is <span class="gold">3</span>! Your total score is <span class="gold">'+currentCorrect+'/'+currentTotal+'</span>');
 				$('div.modal').modal();
-				$("#applause").html("<iframe src='//giphy.com/embed/s59Csd4R2DtQI' width='480' height='403' frameBorder='0' class='giphy-embed' allowFullScreen></iframe><p><a href='http://giphy.com/gifs/frustrated-applause-thumbs-up-s59Csd4R2DtQI'></a></p>").show();
+				$("#applause").html("<iframe src='http://giphy.com/embed/s59Csd4R2DtQI' width='480' height='403' frameBorder='0' class='giphy-embed' allowFullScreen></iframe><p><a href='http://giphy.com/gifs/frustrated-applause-thumbs-up-s59Csd4R2DtQI'></a></p>").show();
 				
 		
 		}
